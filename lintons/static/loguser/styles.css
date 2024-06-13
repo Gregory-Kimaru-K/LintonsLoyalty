@@ -1,0 +1,149 @@
+/*
+ * ##########
+ * ###############
+ * Add Customer points
+ * ###############
+ * ##########
+*/
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #f0f8ff;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.login-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 450px;
+    padding: 40px;
+    margin: 20px auto;
+    transform: translate(-50%, -55%);
+    background: rgba(0,0,0,.9);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+}
+
+.login-box p:first-child {
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.login-box .user-box {
+    position: relative;
+}
+
+.login-box .user-box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+
+.login-box .user-box label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.login-box .user-box input:focus ~ label,
+.login-box .user-box input:valid ~ label {
+    top: -20px;
+    left: 0;
+    color: #fff;
+    font-size: 12px;
+}
+
+.login-box button {
+    position: relative;
+    left: 26%;
+    width: 48%;
+    height: 40px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background: #f2f3f4;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.login-box button:active {
+    transform: scale(0.8);
+}
+
+/*
+ * ##########
+ * ###############
+ * Login the user
+ * ###############
+ * ##########
+*/
+
+.base {
+    background: #2f4f4f;
+}
+
+
+.user-box .img {
+    position: absolute;
+    right: 10px;
+    width: 32px;
+    height: 24px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.logout {
+    position: fixed;
+    width: 100%;
+    height: 45px;
+    padding-bottom: 16px;
+    padding-top: 16px;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 1.2rem;
+}
+
+.logout a{
+    width: 20%;
+    height: 90%;
+    border: none;
+    margin-right: 16px;
+    text-decoration: none;
+}
+
+.logout a button{
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.logout a button:active{
+    transform: scale(0.8);
+}
