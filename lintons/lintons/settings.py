@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -75,6 +76,21 @@ WSGI_APPLICATION = 'lintons.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'mssql',
+        'NAME': os.environ['DATABASE_NAME'],
+        'USER': os.environ['USERNAME'],
+        'PASSWORD': os.environ['PASSWORD'],
+        'HOST': os.environ['HOST'],
+        # 'PORT': '',
+        'OPTIONS': {
+            'driver' : 'ODBC Driver 17 for SQL Server',
+            'Trust_Connection':'yes',
+        }
+    }
+}
 
 
 # Password validation
