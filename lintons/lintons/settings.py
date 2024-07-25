@@ -10,8 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
-import os
 from pathlib import Path
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -80,13 +83,13 @@ WSGI_APPLICATION = 'lintons.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'mssql',
-        'NAME': os.environ['DATABASE_NAME'],
-        'USER': os.environ['USERNAME'],
-        'PASSWORD': os.environ['PASSWORD'],
-        'HOST': os.environ['HOST'],
+        'NAME': os.getenv('DTBS_NAME'),
+        'USER': os.getenv('DTBS_USER'),
+        'PASSWORD': os.getenv('DTBS_PASSWORD'),
+        'HOST': os.getenv('DTBS_HOST'),
         # 'PORT': '',
         'OPTIONS': {
-            'driver' : 'ODBC Driver 17 for SQL Server',
+            'driver' : os.getenv('ODBC_DRIVER'),
             'Trust_Connection':'yes',
         }
     }
