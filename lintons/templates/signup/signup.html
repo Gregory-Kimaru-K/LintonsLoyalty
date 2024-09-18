@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="{% static 'loguser/styles.css' %}">
+    
+    <!--Fonts-->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <form action="" class="first-form">
+        <div class="card">
+            <a class="singup">Sign Up</a>
+            <div class="inputBox1">
+                <input type="text" required="required">
+                <span class="user">Name</span>
+            </div>
+
+            <div class="inputBox">
+                <input type="email" required="required">
+                <span>Email</span>
+            </div>
+            <button class="enter">Enter</button>
+        </div>
+    </form>
+
+    <form action="" class="second-form">
+        <div class="card">
+            <a class="singup">Sign Up</a>
+            <div class="inputBox">
+                <input type="tel" required="required">
+                <span>PhoneNumber</span>
+            </div>
+
+            <div class="inputBox">
+                <input class="pass_in" type="password" required="required">
+                <ion-icon class="eye-icon" name="eye-outline"></ion-icon>
+                <span>Password</span>
+            </div>
+            <button class="enter">Enter</button>
+        </div>
+    </form>
+
+    <form action="" class="third-form"></form>
+        <div class="card">
+            <a class="singup">Sign Up</a>
+            <div class="inputBox">
+                <input type="tel" required="required">
+                <span>PhoneNumber</span>
+            </div>
+
+            <div class="inputBox">
+                <input class="pass_in" type="password" required="required">
+                <ion-icon class="eye-icon" name="eye-outline"></ion-icon>
+                <span>Password</span>
+            </div>
+            <button class="enter">Enter</button>
+        </div>
+    </form>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="{% static 'loguser/main.js' %}"></script>
+</body>
+</html>
