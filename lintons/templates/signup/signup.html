@@ -43,26 +43,35 @@
                 <ion-icon class="eye-icon" name="eye-outline"></ion-icon>
                 <span>Password</span>
             </div>
+
+            <div class="inputBox confirm">
+                <input class="pass_in" type="password" required="required">
+                <ion-icon class="eye-icon" name="eye-outline"></ion-icon>
+                <span>Confirm Password</span>
+            </div>
             <button class="enter">Enter</button>
         </div>
     </form>
 
-    <form action="" class="third-form"></form>
+    <form action="" class="third-form">
         <div class="card">
             <a class="singup">Sign Up</a>
             <div class="inputBox">
-                <input type="tel" required="required">
-                <span>PhoneNumber</span>
-            </div>
-
-            <div class="inputBox">
-                <input class="pass_in" type="password" required="required">
-                <ion-icon class="eye-icon" name="eye-outline"></ion-icon>
-                <span>Password</span>
+                <h2>
+                    Gender
+                </h2>
+                <label>
+                    <p>Female</p>
+                    <input type="radio" name="gender" required="required">
+                </label>
+                <label>
+                    <p>Male</p>
+                    <input type="radio" name="gender" required="required">
+                </label>
             </div>
             <button class="enter">Enter</button>
         </div>
-    </form>
+    </form>    
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="{% static 'loguser/main.js' %}"></script>
