@@ -1,7 +1,7 @@
 /*
  * ##########
  * ###############
- * Colours points
+ * ROOT
  * ###############
  * ##########
 */
@@ -27,7 +27,7 @@ body {
     height: 100vh;
     background: var(--color4);
     color: var(--color1);
-    overflow-x: hidden;
+    overflow: hidden;
     font-family: "Ubuntu", sans-serif;
     font-weight: 300;
     font-style: normal;
@@ -147,6 +147,11 @@ body {
 .inputBox1 input:focus {
     border: 2px solid var(--color3);
     border-radius: 3px;
+}
+
+.buttons {
+    display: flex;
+    gap: 1.8rem;
 }
 
 .enter {

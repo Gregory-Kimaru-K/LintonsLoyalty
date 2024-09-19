@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <form action="" class="first-form">
+    <form class="first-form">
         <div class="card">
             <a class="singup">Sign Up</a>
             <div class="inputBox1">
@@ -30,7 +30,7 @@
         </div>
     </form>
 
-    <form action="" class="second-form">
+    <form class="second-form">
         <div class="card">
             <a class="singup">Sign Up</a>
             <div class="inputBox">
@@ -38,22 +38,25 @@
                 <span>PhoneNumber</span>
             </div>
 
-            <div class="inputBox">
+            <div class="inputBox password">
                 <input class="pass_in" type="password" required="required">
                 <ion-icon class="eye-icon" name="eye-outline"></ion-icon>
                 <span>Password</span>
             </div>
 
-            <div class="inputBox confirm">
+            <div class="inputBox password confirm">
                 <input class="pass_in" type="password" required="required">
                 <ion-icon class="eye-icon" name="eye-outline"></ion-icon>
                 <span>Confirm Password</span>
             </div>
-            <button class="enter">Enter</button>
+            <div class="buttons">
+                <button class="back enter">Back</button>
+                <button class="enter">Enter</button>
+            </div>
         </div>
     </form>
 
-    <form action="" class="third-form">
+    <form class="third-form">
         <div class="card">
             <a class="singup">Sign Up</a>
             <div class="inputBox">
@@ -69,7 +72,14 @@
                     <input type="radio" name="gender" required="required">
                 </label>
             </div>
-            <button class="enter">Enter</button>
+            <div class="inputBox">
+                <input type="date">
+                <span>Birth Year</span>
+            </div>
+            <div class="buttons">
+                <button class="back enter">Back</button>
+                <button class="enter">Enter</button>
+            </div>
         </div>
     </form>    
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
