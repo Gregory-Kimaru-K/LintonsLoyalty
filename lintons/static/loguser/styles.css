@@ -12,6 +12,8 @@
     --color3: #f2f3f4;
     --color4: #2f4f4f;
     --color5: rgba(0,0,0);
+    --color6: rgb(255,0,0);
+    --color7: rgb(0,255,0);
 }
 
 /*
@@ -25,6 +27,7 @@
 body {
     width: 100%;
     height: 100vh;
+    display: flex;
     background: var(--color4);
     color: var(--color1);
     overflow: hidden;
@@ -44,7 +47,7 @@ body {
 .first-form,
 .second-form,
 .third-form {
-    width: 100%;
+    min-width: 100vw;
     height: 100%;
     display: flex;
     align-items: center;
@@ -56,7 +59,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 350px;
-    width: 50%;
+    min-width: 500px;
     flex-direction: column;
     gap: 35px;
     border-radius: 15px;
@@ -151,10 +154,11 @@ body {
 
 .buttons {
     display: flex;
-    gap: 1.8rem;
+    gap: 3.8rem;
 }
 
-.enter {
+.enter,
+.back {
     height: 45px;
     width: 100px;
     border-radius: 5px;
@@ -169,7 +173,8 @@ body {
     margin-bottom: 3em;
 }
 
-.enter:hover {
+.enter:hover,
+.back:hover {
     background-color: var(--color1);
     color: var(--color4);
 }
@@ -190,4 +195,8 @@ body {
 .third-form .card .inputBox label input{
     position: absolute;
     top: 0;
+}
+
+.feedrong {
+    color: var(--color6);
 }
