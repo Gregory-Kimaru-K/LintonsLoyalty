@@ -24,14 +24,14 @@ pass_inputs.forEach(pass_input => {
 /**
  * ##########
  * ###############
- * UX and Form Submission 
+ * UX
  * ###############
  * ##########
  */
 
 const forms = document.querySelectorAll('form');
 
-forms.forEach(form => {
+forms.forEach((form, index) => {
     const enter = form.querySelector('.enter');
     const back = form.querySelector('.back');
 
@@ -41,20 +41,53 @@ forms.forEach(form => {
         let valid = true;
 
         inputs.forEach(input => {
-            if (!input.checkValidity()) {  // Use built-in validity check
+            const inbox = input.parentElement;
+            const feedrongs = inbox.querySelectorAll('.feedrong');
+            feedrongs.forEach(feedrong => feedrong.remove());
+            if (!input.checkValidity()) {
                 valid = false;
                 if (input.validity.typeMismatch) {
-                    alert(`The value for ${input.name} is not a valid ${input.type}`);
+                    const feedback = document.createElement('p');
+                    feedback.classList.add('feedrong');
+                    const msg = `This value is not a valid ${input.type}`
+                    feedback.innerHTML = msg;
+                    inbox.appendChild(feedback);
                 } else if (input.validity.valueMissing) {
-                    alert(`Please fill the ${input.name} field`);
+                    const feedback = document.createElement('p');
+                    feedback.classList.add('feedrong');
+                    const msg = `Please fill this field`
+                    feedback.innerHTML = msg;
+                    inbox.appendChild(feedback);
                 } else if (input.validity.patternMismatch) {
-                    alert(`The value for ${input.name} does not match the expected pattern`);
+                    const feedback = document.createElement('p');
+                    feedback.classList.add('feedrong');
+                    const msg = `This value does not match the expected pattern`
+                    feedback.innerHTML = msg;
+                    inbox.appendChild(feedback);
                 }
             }
         });
-
+        
+        if (index === 1) {
+            const confirm = document.querySelector('.confirm');
+            const passwrd = document.querySelector('.passent');
+            const pass1 = passwrd.querySelector('.pass_in');
+            const pass2 = confirm.querySelector('.pass_in');
+            if (pass1.value != pass2.value) {
+                valid = false;
+                const feedback = document.createElement('p');
+                const feedback1 = document.createElement('p');
+                feedback.classList.add('feedrong');
+                feedback1.classList.add('feedrong');
+                const msg = 'Must be the same';
+                feedback.innerHTML = msg;
+                feedback1.innerHTML =msg;
+                confirm.appendChild(feedback);
+                passwrd.appendChild(feedback1);
+            }
+        }
+        
         if (valid) {
-            // Proceed to next form or save data
             form.style.display = 'none';
             const nextForm = form.nextElementSibling;
             if (nextForm) {
@@ -75,9 +108,23 @@ forms.forEach(form => {
     }
 });
 
-// Initially hide all forms except the first one
 forms.forEach((form, index) => {
     if (index !== 0) {
         form.style.display = 'none';
     }
 });
+
+/**
+ * ##########
+ * ###############
+ * Form Submission 
+ * ###############
+ * ##########
+ */
+
+const send = document.querySelector('.save');
+
+send.addEventListener('click', function(event){
+    event.preventDefault();
+    
+})
