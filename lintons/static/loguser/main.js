@@ -68,24 +68,24 @@ forms.forEach((form, index) => {
             }
         });
         
-        if (index === 1) {
-            const confirm = document.querySelector('.confirm');
-            const passwrd = document.querySelector('.passent');
-            const pass1 = passwrd.querySelector('.pass_in');
-            const pass2 = confirm.querySelector('.pass_in');
-            if (pass1.value != pass2.value) {
-                valid = false;
-                const feedback = document.createElement('p');
-                const feedback1 = document.createElement('p');
-                feedback.classList.add('feedrong');
-                feedback1.classList.add('feedrong');
-                const msg = 'Must be the same';
-                feedback.innerHTML = msg;
-                feedback1.innerHTML =msg;
-                confirm.appendChild(feedback);
-                passwrd.appendChild(feedback1);
-            }
-        }
+        // if (index === 1) {
+        //     const confirm = document.querySelector('.confirm');
+        //     const passwrd = document.querySelector('.passent');
+        //     const pass1 = passwrd.querySelector('.pass_in');
+        //     const pass2 = confirm.querySelector('.pass_in');
+        //     if (pass1.value != pass2.value) {
+        //         valid = false;
+        //         const feedback = document.createElement('p');
+        //         const feedback1 = document.createElement('p');
+        //         feedback.classList.add('feedrong');
+        //         feedback1.classList.add('feedrong');
+        //         const msg = 'Must be the same';
+        //         feedback.innerHTML = msg;
+        //         feedback1.innerHTML =msg;
+        //         confirm.appendChild(feedback);
+        //         passwrd.appendChild(feedback1);
+        //     }
+        // }
         
         if (valid) {
             form.style.display = 'none';
@@ -124,7 +124,26 @@ forms.forEach((form, index) => {
 
 const send = document.querySelector('.save');
 
-send.addEventListener('click', function(event){
+send.addEventListener('click', function(event) {
     event.preventDefault();
     
+    const firstForm = document.querySelector('.first-form');
+    const thirdForm = document.querySelector('.third-form');
+
+    const formData = new FormData();
+
+    const firstFormData = new FormData(firstForm);
+    firstFormData.forEach((value, key) => {
+        formData.append(key, value);
+    });
+
+    const thirdFormData = new FormData(thirdForm);
+    thirdFormData.forEach((value, key) => {
+        formData.append(key, value);
+    });
+
+    console.log(formData)
+    for (let [key, value] of formData.entries()) {
+        console.log(`${key}, ${value}`);
+    }
 })
