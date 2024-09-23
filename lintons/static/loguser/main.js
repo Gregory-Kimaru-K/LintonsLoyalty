@@ -151,6 +151,12 @@ send.addEventListener('click', async function(event) {
                 'X-CSRFToken' : csrf.value
             }
         })
+        if (!response.ok) {
+            throw new Error('Network Response Not okay!')
+        }
+
+        const data = await response.json()
+        console.log(data)
     }
 
     catch (error) {
@@ -174,4 +180,6 @@ send.addEventListener('click', async function(event) {
  */
 colapse.addEventListener('click', function(){
     acceptance.style.display = 'none';
+    const firstForm = document.querySelector('.first-form');
+    firstForm.style.display = 'flex';    
 })
