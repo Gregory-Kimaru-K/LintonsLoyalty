@@ -17,6 +17,7 @@
     <form class="first-form">
         <div class="card">
             <a class="singup">Sign Up</a>
+            {% csrf_token %}
             <div class="inputBox1">
                 <input type="text" name="customername" required="required">
                 <span class="user">Name</span>
@@ -25,9 +26,9 @@
                 <input type="email" name="email" required="required">
                 <span>Email</span>
             </div>
-            <div class="inputBox">
+            <div class="inputBox phone">
                 <input type="tel" name="phone" required="required">
-                <span>PhoneNumber</span>
+                <span>PhoneNumber(EG 739... not 0739)</span>
             </div>
             <div class="inputBox password">
                 <input type="password" name="passwrd" class="pass_in">
@@ -61,8 +62,16 @@
                 </label>
             </div>
             <div class="inputBox">
-                <input type="date">
+                <input type="number" name="byear">
                 <span>Birth Year</span>
+            </div>
+            <div class="inputBox">
+                <input type="number" name="bmonth">
+                <span>Birth Month</span>
+            </div>
+            <div class="inputBox">
+                <input type="number" name="bday">
+                <span>Birth Day</span>
             </div>
             <input class="honey" type="text" name="honey">
             <div class="buttons">

@@ -124,6 +124,7 @@ body {
 
 .phone span {
     width: 250px;
+    transform: translateY(-30px);
 }
 
 .inputBox input:valid~span,
@@ -144,7 +145,7 @@ body {
 
 .phone input:valid~span,
 .phone input:focus~span {
-    transform: translateX(10px) translateY(-55px);
+    transform: translateX(10px) translateY(-75px);
 }
 
 .inputBox1 input:valid~span,

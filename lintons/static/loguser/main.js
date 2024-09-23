@@ -108,6 +108,7 @@ const acceptance = document.querySelector('.acceptance');
 const loader = document.querySelector('.loader');
 const content = document.querySelector('.cont');
 const colapse = document.querySelector('.colapse');
+const csrf = document.querySelector('input[name="csrfmiddlewaretoken"]')
 
 send.addEventListener('click', async function(event) {
     event.preventDefault();
@@ -142,11 +143,21 @@ send.addEventListener('click', async function(event) {
         formData.append(key, value);
     });
 
-    const response = await fetch(, {
-        method: 'POST',
-        body : formData
-    })
+    try{
+        const response = await fetch('add/', {
+            method: 'POST',
+            body : formData,
+            headers : {
+                'X-CSRFToken' : csrf.value
+            }
+        })
+    }
 
+    catch (error) {
+        console.log(error);
+        alert('Unexpected error occured!. Please try again later.')
+        return;
+    }
     setTimeout(function(){
         loader.style.display = 'none';
         content.style.display = 'block';
