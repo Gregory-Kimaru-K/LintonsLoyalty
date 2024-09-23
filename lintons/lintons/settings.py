@@ -80,20 +80,20 @@ WSGI_APPLICATION = 'lintons.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'mssql',
-#         'NAME': os.getenv('DTBS_NAME'),
-#         'USER': os.getenv('DTBS_USER'),
-#         'PASSWORD': os.getenv('DTBS_PASSWORD'),
-#         'HOST': os.getenv('DTBS_HOST'),
-#         # 'PORT': '',
-#         'OPTIONS': {
-#             'driver' : os.getenv('ODBC_DRIVER'),
-#             'Trust_Connection':'yes',
-#         }
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'mssql',
+        'NAME': os.getenv('DTBS_NAME'),
+        'USER': os.getenv('DTBS_USER'),
+        'PASSWORD': os.getenv('DTBS_PASSWORD'),
+        'HOST': os.getenv('DTBS_HOST'),
+        # 'PORT': '',
+        'OPTIONS': {
+            'driver' : os.getenv('ODBC_DRIVER'),
+            'Trust_Connection':'yes',
+        }
+    }
+}
 
 
 # Password validation

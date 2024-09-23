@@ -25,40 +25,24 @@
                 <input type="email" name="email" required="required">
                 <span>Email</span>
             </div>
-            <div class="inputBox phone">
+            <div class="inputBox">
                 <input type="tel" name="phone" required="required">
                 <span>PhoneNumber</span>
+            </div>
+            <div class="inputBox password">
+                <input type="password" name="passwrd" class="pass_in">
+                <ion-icon name="eye-outline" class="eye-icon"></ion-icon>
+                <span>Password</span>
+            </div>
+            <div class="inputBox password confirm">
+                <input type="password" name="confirm" class="pass_in">
+                <ion-icon name="eye-outline" class="eye-icon"></ion-icon>
+                <span>Confirm Password</span>
             </div>
 
             <button class="enter">Enter</button>
         </div>
     </form>
-
-    <!-- <form class="second-form">
-        <div class="card">
-            <a class="singup">Sign Up</a>
-            <div class="inputBox">
-                <input type="tel" name="phone" required="required">
-                <span>PhoneNumber</span>
-            </div>
-
-            <div class="inputBox passent password">
-                <input class="pass_in" name="passwrd" type="password" required="required">
-                <ion-icon class="eye-icon" name="eye-outline"></ion-icon>
-                <span>Password</span>
-            </div>
-
-            <div class="inputBox password confirm">
-                <input class="pass_in" type="password" required="required">
-                <ion-icon class="eye-icon" name="eye-outline"></ion-icon>
-                <span>Confirm Password</span>
-            </div>
-            <div class="buttons">
-                <button class="back">Back</button>
-                <button class="enter">Enter</button>
-            </div>
-        </div>
-    </form> -->
 
     <form class="third-form">
         <div class="card">
@@ -80,13 +64,14 @@
                 <input type="date">
                 <span>Birth Year</span>
             </div>
+            <input class="honey" type="text" name="honey">
             <div class="buttons">
                 <button class="back">Back</button>
                 <button class="enter save">Enter</button>
             </div>
         </div>
     </form>
-    <!-- <div class="acceptance">
+    <div class="acceptance">
         <div class="corrong">
             <div class="loader">
                 <main>
@@ -127,7 +112,7 @@
             </div>
             <button class="colapse">Ok</button>
         </div>
-    </div> -->
+    </div>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="{% static 'loguser/main.js' %}"></script>
