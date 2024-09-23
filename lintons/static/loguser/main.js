@@ -68,25 +68,6 @@ forms.forEach((form, index) => {
             }
         });
         
-        if (index === 0) {
-            const confirm = document.querySelector('.confirm');
-            const passwrd = document.querySelector('.passent');
-            const pass1 = passwrd.querySelector('.pass_in');
-            const pass2 = confirm.querySelector('.pass_in');
-            if (pass1.value != pass2.value) {
-                valid = false;
-                const feedback = document.createElement('p');
-                const feedback1 = document.createElement('p');
-                feedback.classList.add('feedrong');
-                feedback1.classList.add('feedrong');
-                const msg = 'Must be the same';
-                feedback.innerHTML = msg;
-                feedback1.innerHTML =msg;
-                confirm.appendChild(feedback);
-                passwrd.appendChild(feedback1);
-            }
-        }
-        
         if (valid) {
             form.style.display = 'none';
             const nextForm = form.nextElementSibling;
@@ -128,14 +109,26 @@ const loader = document.querySelector('.loader');
 const content = document.querySelector('.cont');
 const colapse = document.querySelector('.colapse');
 
-send.addEventListener('click', function(event) {
+send.addEventListener('click', async function(event) {
     event.preventDefault();
     acceptance.style.display = 'flex';
     loader.style.display = 'grid';
     colapse.style.display = 'none';
+    const h1_1 = document.createElement('p');
+
     const firstForm = document.querySelector('.first-form');
     const thirdForm = document.querySelector('.third-form');
-    
+    const pass1 = document.querySelector('input[name="passwrd"]');
+    const pass2 = document.querySelector('input[name="confirm"]');
+    const honey = document.querySelector('input[name="honey"]');
+    if (pass1.value || pass2.value || (honey && honey.value)) {
+        h1_1.innerHTML = 'Thank you very important!';
+        loader.appendChild(h1_1);
+        return;
+    }
+    const name = document.querySelector('input[name="customername"]')
+    h1_1.innerHTML = `Beauty in progress! 💅✨`;
+    loader.appendChild(h1_1);
 
     const formData = new FormData();
 
@@ -149,9 +142,10 @@ send.addEventListener('click', function(event) {
         formData.append(key, value);
     });
 
-    for (let [key, value] of formData.entries()) {
-        console.log(`${key}, ${value}`);
-    }
+    const response = await fetch(, {
+        method: 'POST',
+        body : formData
+    })
 
     setTimeout(function(){
         loader.style.display = 'none';
