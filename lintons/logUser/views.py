@@ -53,7 +53,7 @@ def sign_up_cust(request):
             return JsonResponse({'msg' : "Phone number format not supported.", 'success' : 'False'})
         
         if Loyalcustomers.objects.filter(phone=phone).exists():
-            return JsonResponse({'msg' : 'User with this number exists.', 'success' : 'False'})
+            return JsonResponse({'msg' : 'User with this Phone Number exists.', 'success' : 'False'})
         
         else:
             timecreated = timezone.now()
@@ -70,4 +70,4 @@ def sign_up_cust(request):
                 birth_month=bmonth,
                 birth_day=bday
             )
-            return JsonResponse({'msg' : 'Type shit!', 'success' : 'True'})
+            return JsonResponse({'msg' : f'{name} Type shit!', 'success' : 'True'})

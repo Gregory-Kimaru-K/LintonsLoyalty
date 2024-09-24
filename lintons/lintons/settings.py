@@ -141,5 +141,5 @@ STATICFILES_DIRS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://42d3-102-219-210-106.ngrok-free.app',
+    'https://0373-102-219-210-106.ngrok-free.app'
 ]

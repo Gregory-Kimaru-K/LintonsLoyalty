@@ -24,18 +24,25 @@ pass_inputs.forEach(pass_input => {
 /**
  * ##########
  * ###############
- * UX
+ * UX And Form Submission
  * ###############
  * ##########
  */
 
 const forms = document.querySelectorAll('form');
+const firstForm = document.querySelector('.first-form');
+const thirdForm = document.querySelector('.third-form');
+const colapse = document.querySelector('.colapse');
+const csrf = document.querySelector('input[name="csrfmiddlewaretoken"]');
+const acceptance = document.querySelector('.acceptance');
+const content = document.querySelector('.cont');
+const loader = document.querySelector('.loader');
 
 forms.forEach((form, index) => {
     const enter = form.querySelector('.enter');
     const back = form.querySelector('.back');
 
-    enter.addEventListener('click', function(event){
+    enter.addEventListener('click', async function(event){
         event.preventDefault();
         const inputs = form.querySelectorAll('input[required]');
         let valid = true;
@@ -67,6 +74,118 @@ forms.forEach((form, index) => {
                 }
             }
         });
+
+        if (valid && index == 1) {
+            content.innerHTML = '';
+            content.style.display = 'none';
+            const pass1 = document.querySelector('input[name="passwrd"]');
+            const pass2 = document.querySelector('input[name="confirm"]');
+            const honey = document.querySelector('input[name="honey"]');
+            if (pass1.value || pass2.value || (honey && honey.value)) {
+                console.log('Thanks')
+                return;
+            }
+
+            acceptance.style.display = 'flex';
+            loader.style.display = 'grid';
+            colapse.style.display = 'none';
+            const formData = new FormData();
+            const firstFormData = new FormData(firstForm);
+            const thirdFormData = new FormData(thirdForm);
+            firstFormData.forEach((value, key) => {
+                formData.append(key, value);
+            })
+
+            thirdFormData.forEach((value, key) => {
+                formData.append(key, value);
+            })
+
+            try{
+                const response = await fetch('add/', {
+                    method: 'POST',
+                    body : formData,
+                    headers : {
+                        'X-CSRFToken' : csrf.value
+                    }
+                })
+                if (!response.ok) {
+                    const icon = document.createElement('ion-icon');
+                    const span_suc = document.createElement('span');
+                    const p = document.createElement('p');
+                    icon.classList.add('bad');
+                    icon.setAttribute('name', 'close-circle');
+                    span_suc.classList.add('success');
+                    span_suc.innerHTML = 'Failed';
+                    p.innerHTML = 'Network Response Not okay!';
+                    content.appendChild(icon);
+                    content.appendChild(span_suc);
+                    content.appendChild(p);
+                }
+        
+                const data = await response.json()
+                if (data.success == 'False'){
+                    const icon = document.createElement('ion-icon');
+                    const span_suc = document.createElement('span');
+                    const p = document.createElement('p');
+                    icon.classList.add('bad');
+                    icon.setAttribute('name', 'close-circle');
+                    span_suc.classList.add('success');
+                    span_suc.innerHTML = 'Failed';
+                    p.innerHTML = data.msg;
+                    content.appendChild(icon);
+                    content.appendChild(span_suc);
+                    content.appendChild(p);
+                }
+                else if (data.success == 'True'){
+                    const icon = document.createElement('ion-icon');
+                    const span_suc = document.createElement('span');
+                    const p = document.createElement('p');
+                    const finputs = firstForm.querySelectorAll('input');
+                    const tinputs = thirdForm.querySelectorAll('input');
+                    icon.classList.add('good');
+                    icon.setAttribute('name', 'checkmark-circle');
+                    span_suc.classList.add('success');
+                    span_suc.innerHTML = 'Success';
+                    p.innerHTML = data.msg;
+                    content.appendChild(icon);
+                    content.appendChild(span_suc);
+                    content.appendChild(p);
+                    finputs.forEach(finput => {
+                        finput.value = '';
+                    })
+                    tinputs.forEach(tinput => {
+                        if (tinput.type !== 'radio'){
+                            tinput.value = '';
+                        }
+                        else{
+                            tinput.checked = false;
+                        }
+                    })
+
+                }
+            }
+        
+            catch (error) {
+                console.log(error);
+                const icon = document.createElement('ion-icon');
+                const span_suc = document.createElement('span');
+                const p = document.createElement('p');
+                icon.classList.add('bad');
+                icon.setAttribute('name', 'close-circle');
+                span_suc.classList.add('success');
+                span_suc.innerHTML = 'Failed';
+                p.innerHTML ='Unexpected error occured!. Please try again later.';
+                content.appendChild(icon);
+                content.appendChild(span_suc);
+                content.appendChild(p);
+                return;
+            }
+            setTimeout(function(){
+                loader.style.display = 'none';
+                content.style.display = 'block';
+                colapse.style.display = 'block';
+            }, 3000);
+        }
         
         if (valid) {
             form.style.display = 'none';
@@ -98,88 +217,12 @@ forms.forEach((form, index) => {
 /**
  * ##########
  * ###############
- * Form Submission 
- * ###############
- * ##########
- */
-
-const send = document.querySelector('.save');
-const acceptance = document.querySelector('.acceptance');
-const loader = document.querySelector('.loader');
-const content = document.querySelector('.cont');
-const colapse = document.querySelector('.colapse');
-const csrf = document.querySelector('input[name="csrfmiddlewaretoken"]')
-
-send.addEventListener('click', async function(event) {
-    event.preventDefault();
-    acceptance.style.display = 'flex';
-    loader.style.display = 'grid';
-    colapse.style.display = 'none';
-    const h1_1 = document.createElement('p');
-
-    const firstForm = document.querySelector('.first-form');
-    const thirdForm = document.querySelector('.third-form');
-    const pass1 = document.querySelector('input[name="passwrd"]');
-    const pass2 = document.querySelector('input[name="confirm"]');
-    const honey = document.querySelector('input[name="honey"]');
-    if (pass1.value || pass2.value || (honey && honey.value)) {
-        h1_1.innerHTML = 'Thank you very important!';
-        loader.appendChild(h1_1);
-        return;
-    }
-    const name = document.querySelector('input[name="customername"]')
-    h1_1.innerHTML = `Beauty in progress! 💅✨`;
-    loader.appendChild(h1_1);
-
-    const formData = new FormData();
-
-    const firstFormData = new FormData(firstForm);
-    firstFormData.forEach((value, key) => {
-        formData.append(key, value);
-    });
-
-    const thirdFormData = new FormData(thirdForm);
-    thirdFormData.forEach((value, key) => {
-        formData.append(key, value);
-    });
-
-    try{
-        const response = await fetch('add/', {
-            method: 'POST',
-            body : formData,
-            headers : {
-                'X-CSRFToken' : csrf.value
-            }
-        })
-        if (!response.ok) {
-            throw new Error('Network Response Not okay!')
-        }
-
-        const data = await response.json()
-        console.log(data)
-    }
-
-    catch (error) {
-        console.log(error);
-        alert('Unexpected error occured!. Please try again later.')
-        return;
-    }
-    setTimeout(function(){
-        loader.style.display = 'none';
-        content.style.display = 'block';
-        colapse.style.display = 'block';
-    }, 5000);
-});
-
-/**
- * ##########
- * ###############
  * Acceptance Success 
  * ###############
  * ##########
  */
 colapse.addEventListener('click', function(){
     acceptance.style.display = 'none';
-    const firstForm = document.querySelector('.first-form');
     firstForm.style.display = 'flex';    
+    thirdForm.style.display = 'none';
 })
