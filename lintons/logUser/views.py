@@ -3,7 +3,6 @@ from .models import Loyalcustomers
 from django.http import JsonResponse
 import re
 from django.utils import timezone
-import pytz
 from datetime import timedelta
 
 # Create your views here.
@@ -70,4 +69,4 @@ def sign_up_cust(request):
                 birth_month=bmonth,
                 birth_day=bday
             )
-            return JsonResponse({'msg' : f'{name} Type shit!', 'success' : 'True'})
+            return JsonResponse({'msg' : f'{name} Welcome to Lintons Beauty loyalty program! You have been awarded 100 points 🎁!', 'success' : 'True'})
